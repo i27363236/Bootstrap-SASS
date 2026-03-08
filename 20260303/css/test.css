@@ -1,0 +1,52 @@
+.block1 {
+  color: #ffb6b6;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(167, 167, 167, 0.8823529412);
+}
+.block1 .block2 {
+  color: #89ca79;
+  width: 100px;
+  height: 100px;
+  background-color: #756262;
+}
+
+.fz-12 {
+  font-size: 12px;
+}
+
+.fz-14 {
+  font-size: 14px;
+}
+
+.fz-16 {
+  font-size: 16px;
+}
+
+.fz-18 {
+  font-size: 18px;
+}
+
+.fz-20 {
+  font-size: 20px;
+}
+
+.fz-22 {
+  font-size: 22px;
+}
+
+.fz-24 {
+  font-size: 24px;
+}
+
+.fz-26 {
+  font-size: 26px;
+}
+
+.fz-28 {
+  font-size: 28px;
+}
+
+.fz-30 {
+  font-size: 30px;
+}/*# sourceMappingURL=test.css.map */

@@ -1,0 +1,17 @@
+.Ing .block {
+  width: 100px;
+  height: 100px;
+  background-color: #e98c8c;
+}
+
+.olaf .block {
+  width: 200px;
+  height: 200px;
+  background-color: #927070;
+}
+
+.renee .block {
+  width: 200px;
+  height: 200px;
+  background-color: #9f1919;
+}/*# sourceMappingURL=main.css.map */

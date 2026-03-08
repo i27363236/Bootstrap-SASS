@@ -1,0 +1,22 @@
+$fontColor: #ffb6b6
+$fontColor2: #89ca79
+
+@mixin sizing($bgc1)
+    width: 100px
+    height: 100px
+    background-color: $bgc1
+//類似js的function + return
+
+.block1
+    color: $fontColor
+    @include sizing(#a7a7a7e1)
+    .block2
+        color: $fontColor2
+        @include sizing(#756262)
+
+@for $i from 1 through 10 //for迴圈10圈，變數$i
+    $size: 10 + $i * 2
+    .fz-#{$size} //產生 .fz- 開頭的類別
+        font-size: #{$size}px
+        //類別內容font-size，值是迴圈變數$i
+        //用#{}來顯示變數

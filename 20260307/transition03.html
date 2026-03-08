@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>進階Transition控制任何節點屬性</title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            /* display: grid;
+            place-items: center; */
+        }
+
+        .btn {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+            /* 不在body用display grid的置中方式 */
+
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 4px;
+            background-color: lightpink;
+            color: azure;
+            cursor: pointer;
+            user-select: none;
+            transform-origin: center center;
+
+            scale: 2;
+            overflow: hidden;
+
+            .bg {
+                width: 0%;
+                height: 100%;
+                position: absolute;
+                background-color: palevioletred;
+                top: 0;
+                right: 0;
+                transition: all 0.25s;
+            }
+
+            .text {
+                position: relative;
+            }
+
+            &:hover .bg {
+                width: 100%;
+            }
+        }
+
+        .info {
+            position: absolute;
+            background-color: gold;
+            border-radius: 10px;
+            padding: 6px;
+            top: 50px;
+            left: 50px;
+            opacity: 0;
+            transform: translateY(-10px);
+
+            /* transform 動畫時長 動畫delay時長 */
+            transition: transform 0.5s, opacity 0.5s 0.5s;
+            /* 退回去的動畫，transform跟opacity順序反過來寫 */
+
+            &.active {
+                opacity: 1;
+                transform: translateY(0px);
+                transition: opacity 0.5s, transform 0.5s 0.5s;
+                /* 出現的動畫 */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn">
+        <div class="bg"></div>
+        <div class="text">BUTTON3</div>
+    </div>
+
+    <div class="info">ↀᴥↀ</div>
+
+    <script>
+        // query選擇，selector選擇器
+        // btn為類別，為".btn"
+        const btn = document.querySelector(".btn");
+        const info = document.querySelector(".info");
+        let x, y;
+
+        //對應 mouseenter -> mouseleave
+        //類似 mouseover -> mouseout
+        btn.addEventListener("mouseenter", e => {
+            console.log('移上按鈕');
+            x = e.target.getBoundingClientRect().left;
+            y = e.target.getBoundingClientRect().top;
+            info.style.left = `${x}px`;
+            info.style.top = `${y - 30}px`;
+
+            info.innerHTML = e.target.dataset.info;
+        });
+
+        btn.addEventListener("transitionend", (e) => { //e=event，e外括號可省略
+            console.log('動畫結束');
+            console.log(e.propertyName); //width
+            // console.log(btn.matches(":hover"));
+
+            if (btn.matches(":hover")) {
+                console.log('滑鼠移入');
+                info.classList.add("active"); //classList即html中的Class
+                return; //讓動作停在這一句
+            }
+            console.log('滑鼠移開'); //if~else的變形寫法
+            info.classList.remove("active");
+        })
+
+        info.addEventListener("transitionend", (event) => {
+            console.log(event.propertyName); //opacity
+            console.log(info.matches(".active")); //false
+            if (!info.matches(".active") && event.propertyName == "opacity") {
+                info.style.left = `-1000px`;
+                info.style.top = `-1000px`;
+                info.innerHTML = "";
+            }
+        });
+    </script>
+</body>
+
+</html>

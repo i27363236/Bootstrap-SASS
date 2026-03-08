@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition控制自己的子節點屬性</title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            display: grid;
+            place-items: center;
+        }
+
+        .btn {
+            position: relative;
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 4px;
+            background-color:darkseagreen;
+            color: azure;
+            cursor: pointer;
+            user-select: none;
+            scale: 2;
+            overflow: hidden;
+
+            .bg {
+                width: 0%;
+                height: 100%;
+                position: absolute;
+                background-color: seagreen;
+                top: 0;
+                right: 0;
+                transition: all 0.25s;
+            }
+
+            .text {
+                position: relative;
+            }
+
+            &:hover .bg {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn">
+        <div class="bg"></div>
+        <div class="text">BUTTON2</div>
+    </div>
+</body>
+
+</html>

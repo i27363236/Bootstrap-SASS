@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gsap.from()</title>
+
+    <style>
+        .box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: rosybrown;
+            margin-bottom: 10px;
+        }
+
+        .box1,
+        .box2,
+        .box3 {
+            left: 100px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            display: flex;
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+
+    <div class="container">
+        <div class="title title1">Rock on the Hellevator</div>
+        <div class="title title2">Rock on the Hellevator</div>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+
+    <script>
+        const title2 = document.querySelector(".title2");
+        const title2Text = title2.innerText;
+        title2.innerText = "";
+
+        console.log(title2Text.split(""));
+        title2Text.split("").forEach(function(char) {
+            const span = document.createElement("span");
+            span.textContent = char;
+            title2.append(span);
+        })
+
+        requestIdleCallback(function () {
+            gsap.to(".box1", {
+                x: 300,
+                duration: 1,
+            });
+
+            gsap.from(".box2", {
+                x: 300,
+                duration: 1,
+                delay: 1,
+            });
+
+            gsap.from(".title1", {
+                scale: 2,
+                opacity: 0,
+                duration: 1,
+                delay: 2,
+            });
+
+            gsap.from(".title2 span", {
+                scale: 2,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.5,
+                delay: 3,
+            });
+        });
+    </script>
+</body>
+
+</html>

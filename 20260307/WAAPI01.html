@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Animations API</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: steelblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+    <button>暫停<i class="fa-solid fa-fish"></i></button>
+    <button>播放<i class="fa-solid fa-kiwi-bird"></i></button>
+    <button>倍速<i class="fa-solid fa-otter"></i></button>
+    <button>原速<i class="fa-solid fa-cat"></i></button>
+
+    <script>
+        const box = document.querySelector(".box");
+        console.log(box);
+
+        const keyframes = [
+            // { transform: "translateX(0)", opacity: 0 },
+            // { transform: "translateX(200px)", opacity: 1 }
+            {left: 0},
+            {left: "calc(100% - 100px)"}, //單用100%會超出去
+            {left: 0},
+        ]
+
+        const options = {
+            duration: 4000, //2s
+            iterations: Infinity, //重複兩次(數字/Infinity)
+            easing: "linear" //時間函數(ease-in-out/linear)
+        }
+
+        const btns = document.querySelectorAll("button");
+        // console.log(btns);
+
+        const ani01 = box.animate(keyframes, options);
+
+        btns[0].addEventListener("click", function(){
+            ani01.pause();
+        });   
+        btns[1].addEventListener("click", function(){
+            ani01.play();
+        });
+        btns[2].addEventListener("click", function(){
+            ani01.playbackRate = 3; //倍速
+        });
+        btns[3].addEventListener("click", function(){
+            ani01.playbackRate = 1; //原速
+        });
+
+    </script>
+</body>
+
+</html>

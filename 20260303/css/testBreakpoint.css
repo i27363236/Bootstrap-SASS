@@ -1,0 +1,34 @@
+body::after {
+  content: "XS";
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 100px;
+  font-weight: bold;
+  color: #bb6d6d;
+}
+@media (min-width: 576px) {
+  body::after {
+    content: "SM";
+  }
+}
+@media (576px <= width <= 768px) {
+  body::after {
+    content: "MD";
+  }
+}
+@media (min-width: 992px) {
+  body::after {
+    content: "LG";
+  }
+}
+@media (min-width: 1200px) {
+  body::after {
+    content: "XL";
+  }
+}
+@media (min-width: 1400px) {
+  body::after {
+    content: "XXL";
+  }
+}/*# sourceMappingURL=testBreakpoint.css.map */
