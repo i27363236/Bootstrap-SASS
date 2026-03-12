@@ -1,0 +1,40 @@
+h1 {
+  font-size: 70px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 50px;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+h5 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+h6 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+header {
+  box-sizing: border-box;
+  padding: 10px;
+  height: 250px;
+  background-color: #0084ff;
+  color: #ffffff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}/*# sourceMappingURL=page.css.map */
